@@ -16,14 +16,14 @@ if (isset($_POST['submit']) && !empty($_POST['nome']) && !empty($_POST['senha'])
 
     if (mysqli_num_rows($result) > 0) {
         // Login bem-sucedido
-       unset($_SESSION['nome']);
-       unset($_SESSION['senha']);
-        header('Location: index.html');
+          $_SESSION['nome'] = $nome;
+        $_SESSION['senha'] = $senha;
+        header('Location: sucesso.php');
         exit;
     } else {
         // Falha no login
-        $_SESSION['nome'] = $nome;
-        $_SESSION['senha'] = $senha;
+      unset($_SESSION['nome']);
+       unset($_SESSION['senha']);
         header('Location: login.php');
         exit;
     }
